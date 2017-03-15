@@ -8,7 +8,7 @@ Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 -->
 
-<link rel="import" href="../bower_components/polymer/polymer.html">
+
 <link rel="import" href="shared-styles.html">
 
 <dom-module id="my-view3">
@@ -20,18 +20,48 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         padding: 10px;
       }
     </style>
+    <script src="../bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
+	<link rel="import" href="../bower_components/vaadin-grid/vaadin-grid-1.2.1/vaadin-grid.html">
 
-    <div class="card">
-      <div class="circle">3</div>
-      <h1>View Three</h1>
-      <p>Modus commodo minimum eum te, vero utinam assueverit per eu.</p>
-      <p>Ea duis bonorum nec, falli paulo aliquid ei eum.Has at minim mucius aliquam, est id tempor laoreet.Pro saepe pertinax ei, ad pri animal labores suscipiantur.</p>
-    </div>
-  </template>
+    <link rel="import" href="../bower_components/polymer/polymer.html">
+      <div class="card">
+      <H1>Göt Hüsoooo</H1>
+	<vaadin-grid selection-mode="multi">
+     <table id="restaurant">
+       <!-- Define the columns and their mapping to data properties. -->
+       <col name="firstName">
+       <col name="lastName">
+       <col name="email">
 
+       <!-- Define the column headings. -->
+       <thead>
+         <tr>
+           <th>First Name</th>
+           <th>Last Name</th>
+           <th>Email</th>
+         </tr>
+       </thead>
+       <tr>
+           <td>Firsdvsdt Name</td>
+           <td>Lasert Name</td>
+           <td>Email</td>
+         </tr>
+     </table>
+   </vaadin-grid>
+   </div>
+
+   </template>
   <script>
     Polymer({
       is: 'my-view3',
     });
   </script>
+   <script>
+     var table = document.getElementById("restaurant");
+    var row = table.insertRow(2);
+    var cell1 = row.insertCell(0);
+    var cell2 = row.insertCell(1);
+    cell1.innerHTML = "Göt";
+    cell2.innerHTML = "YGA";
+   </script>
 </dom-module>
