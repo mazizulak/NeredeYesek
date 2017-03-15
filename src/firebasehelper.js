@@ -18,3 +18,18 @@ FIRRef.child('Restaurants').child('Balıkev').on("value", function(snapshot) {
 }, function (error) {
    console.log("Error: " + error.code);
 });
+
+var table = document.getElementById("restaurant").getElementsByTagName('tbody')[0];
+var row = table.insertRow(table.rows.length);
+var cell1 = row.insertCell(0);
+var cell2 = row.insertCell(1);
+var cell3 = row.insertCell(2);
+var cell4 = row.insertCell(3);
+var img = document.createElement('img');
+img.style.height = '100px';
+img.style.width = '100px';
+img.src ="../images/nusret.jpg";
+cell1.appendChild(img);
+cell2.innerHTML = "Nusret";
+cell3.innerHTML = "Very Expensive";
+cell4.innerHTML = "Etiler";
