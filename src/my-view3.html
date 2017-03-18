@@ -11,7 +11,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <link rel="import" href="shared-styles.html">
 
-<dom-module id="my-view3">
+<dom-module id="my-view3" domReady="getRst">
+  
   <template>
     <style include="shared-styles">
       :host {
@@ -21,22 +22,23 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
     </style>
     <script src="../bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
+
 	<link rel="import" href="../bower_components/vaadin-grid/vaadin-grid-1.2.1/vaadin-grid.html">
 
     <link rel="import" href="../bower_components/polymer/polymer.html">
       <div class="card">
-      <H1>Göt Hüsoooo</H1>
 	<vaadin-grid selection-mode="multi">
      <table id="restaurant">
        <!-- Define the columns and their mapping to data properties. -->
-       <col name="firstName">
-       <col name="lastName">
-       <col name="email">
+       <col name="picture">
+       <col name="name">
+       <col name="price">
+       <col name="Location">
 
        <!-- Define the column headings. -->
        <thead>
          <tr>
-           <th>Thumbnail</th>
+           <th>Picture</th>
            <th>Restaurant Name</th>
            <th>Price Level</th>
            <th>Location</th>
@@ -51,12 +53,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
    </template>
 
-  
   <script>
     Polymer({
       is: 'my-view3',
     });
   </script>
-  <script src="https://www.gstatic.com/firebasejs/3.7.1/firebase.js"></script>
-  <script src="firebasehelper.js"></script>
+
+   <script src="https://www.gstatic.com/firebasejs/3.7.1/firebase.js"></script>
+   <script type="text/javascript" src="firebasehelper3.js"></script>
 </dom-module>

@@ -263,7 +263,7 @@ See the [demo](demo/index.html) for use case examples.
   }
 
   .vaadin-grid-body tr {
-    height: var(--vaadin-grid-row-height, 48px);
+    height: var(--vaadin-grid-row-height, 70px);
     left: 0;
     top: 0;
     position: absolute;
@@ -1315,7 +1315,7 @@ See the [demo](demo/index.html) for use case examples.
     attached: function() {
       this._grid.setHeaderHeight(parseFloat(this.getComputedStyleValue('--vaadin-grid-header-row-height')) || 56);
       this._grid.setFooterHeight(parseFloat(this.getComputedStyleValue('--vaadin-grid-footer-row-height')) || 56);
-      this._grid.setBodyHeight(parseFloat(this.getComputedStyleValue('--vaadin-grid-row-height')) || 48);
+      this._grid.setBodyHeight(parseFloat(this.getComputedStyleValue('--vaadin-grid-row-height')) || 70);
       this._bindResizeListener();
       this.then(function() {
         this.toggleClass('vaadin-grid-loading', false);
