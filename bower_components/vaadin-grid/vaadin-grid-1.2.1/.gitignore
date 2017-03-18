@@ -1,0 +1,17 @@
+.git
+target/
+gwt-unitCache/
+.gwt/
+www-test/
+.settings/
+.classpath
+.project
+war
+.DS_Store
+.sass-cache/
+/bower_components
+node_modules
+npm-debug.log
+.idea
+*.iml
+test/angular2/typings
