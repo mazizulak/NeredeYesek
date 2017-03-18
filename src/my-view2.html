@@ -111,6 +111,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       <paper-button onclick="addMember();" dialog-confirm autofocus>Add Member</paper-button>
     </div>
   </paper-dialog>
+  <paper-dialog id="dialogForEdit">
+    <h2>Edit Member</h2>
+      <paper-input id="editUserName" label="Member Name"></paper-input>
+      <paper-input id="editUserMail" label="E-mail"></paper-input>
+    <div class="buttons">
+      <paper-button dialog-dismiss>Cancel</paper-button>
+      <paper-button onclick="saveMember();" dialog-confirm autofocus>Save Member</paper-button>
+    </div>
+  </paper-dialog>
     </div>
   </template>
 
