@@ -8,7 +8,6 @@ Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 -->
 
-<link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="shared-styles.html">
 
 <dom-module id="my-view2">
@@ -20,12 +19,91 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         padding: 10px;
       }
     </style>
+    <style is="custom-style">
+  paper-button.custom {
+    --paper-button-ink-color: var(--paper-pink-a200);
+    /* These could also be individually defined for each of the
+      specific css classes, but we'll just do it once as an example */
+    --paper-button-flat-keyboard-focus: {
+      background-color: var(--paper-pink-a200);
+      color: white !important;
+    };
+    --paper-button-raised-keyboard-focus: {
+      background-color: var(--paper-pink-a200) !important;
+      color: white !important;
+    };
+  }
+  paper-button.custom:hover {
+    background-color: var(--paper-indigo-100);
+  }
+  paper-button.pink {
+    color: var(--paper-pink-a200);
+
+  }
+  paper-button.indigo {
+    background-color: var(--paper-indigo-500);
+    color: white;
+    --paper-button-raised-keyboard-focus: {
+      background-color: var(--paper-pink-a200) !important;
+      color: white !important;
+    };
+  }
+  paper-button.green {
+    background-color: var(--paper-green-500);
+    color: white;
+  }
+  paper-button.green[active] {
+    background-color: var(--paper-red-500);
+  }
+  paper-button.disabled {
+    color: white;
+  }
+</style>
+    <script src="../bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
+    <link rel="import" href="../bower_components/vaadin-grid/vaadin-grid-1.2.1/vaadin-grid.html">
+    <link rel="import" href="../bower_components/polymer/polymer.html">
+    <link rel="import" href="../bower_components/paper-dialog/paper-dialog.html">
+    <link rel="import" href="../bower_components/paper-button/paper-button.html">
+    <link rel="import" href="../bower_components/paper-input/paper-input.html">
+    <link rel="import" href="../bower_components/iron-icon/iron-icon.html">
 
     <div class="card">
-      <div class="circle">2</div>
-      <h1>View Two</h1>
-      <p>Ea duis bonorum nec, falli paulo aliquid ei eum.</p>
-      <p>Id nam odio natum malorum, tibique copiosae expetenda mel ea.Detracto suavitate repudiandae no eum. Id adhuc minim soluta nam.Id nam odio natum malorum, tibique copiosae expetenda mel ea.</p>
+      <vaadin-grid selection-mode="multi">
+     <table id="member">
+       <!-- Define the columns and their mapping to data properties. -->
+       <col name="picture">
+       <col name="name">
+       <col name="usedVote">
+       <col name="edit">
+
+       <!-- Define the column headings. -->
+       <thead>
+         <tr>
+           <th>Picture</th>
+           <th>Name</th>
+           <th>Used Vote</th>
+           <th>Edit Member</th>
+         </tr>
+       </thead>
+       <tbody>
+        
+       </tbody>
+     </table>
+   </vaadin-grid>
+
+   <br>
+  <paper-button raised class="indigo" onclick="dialog.open()">Add Member</paper-button>
+  <iron-icon icon="create:ICON_NAME"></iron-icon>
+   <paper-dialog id="dialog">
+
+    <h2>Add Member</h2>
+      <paper-input label="Member Name"></paper-input>
+      <paper-input label="E-mail"></paper-input>
+    <div class="buttons">
+      <paper-button dialog-dismiss>Cancel</paper-button>
+      <paper-button dialog-confirm autofocus>Add Member</paper-button>
+    </div>
+  </paper-dialog>
     </div>
   </template>
 
@@ -34,4 +112,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       is: 'my-view2',
     });
   </script>
+  <script src="https://www.gstatic.com/firebasejs/3.7.1/firebase.js"></script>
+  <script type="text/javascript" src="firebasehelper2.js"></script>
 </dom-module>

@@ -11,7 +11,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <link rel="import" href="shared-styles.html">
 
-<dom-module id="my-view3">
+<dom-module id="my-view3" domReady="getRst">
+  
   <template>
     <style include="shared-styles">
       :host {
@@ -20,23 +21,67 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         padding: 10px;
       }
     </style>
+    <style is="custom-style">
+        paper-button.custom {
+            --paper-button-ink-color: var(--paper-pink-a200);
+            /* These could also be individually defined for each of the
+             specific css classes, but we'll just do it once as an example */
+            --paper-button-flat-keyboard-focus: {
+                background-color: var(--paper-pink-a200);
+                color: white !important;
+            };
+            --paper-button-raised-keyboard-focus: {
+                background-color: var(--paper-pink-a200) !important;
+                color: white !important;
+            };
+        }
+    paper-button.custom:hover {
+        background-color: var(--paper-indigo-100);
+    }
+    paper-button.pink {
+        color: var(--paper-pink-a200);
+        
+    }
+    paper-button.indigo {
+        background-color: var(--paper-indigo-500);
+        color: white;
+        --paper-button-raised-keyboard-focus: {
+            background-color: var(--paper-pink-a200) !important;
+            color: white !important;
+        };
+    }
+    paper-button.green {
+        background-color: var(--paper-green-500);
+        color: white;
+    }
+    paper-button.green[active] {
+        background-color: var(--paper-red-500);
+    }
+    paper-button.disabled {
+        color: white;
+    }
+    </style>
     <script src="../bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
-	<link rel="import" href="../bower_components/vaadin-grid/vaadin-grid-1.2.1/vaadin-grid.html">
 
+	<link rel="import" href="../bower_components/vaadin-grid/vaadin-grid-1.2.1/vaadin-grid.html">
     <link rel="import" href="../bower_components/polymer/polymer.html">
+    <link rel="import" href="../bower_components/paper-dialog/paper-dialog.html">
+    <link rel="import" href="../bower_components/paper-button/paper-button.html">
+    <link rel="import" href="../bower_components/paper-input/paper-input.html">
+    <link rel="import" href="../bower_components/iron-icon/iron-icon.html">
       <div class="card">
-      <H1>Göt Aziz</H1>
 	<vaadin-grid selection-mode="multi">
      <table id="restaurant">
        <!-- Define the columns and their mapping to data properties. -->
-       <col name="firstName">
-       <col name="lastName">
-       <col name="email">
+       <col name="picture">
+       <col name="name">
+       <col name="price">
+       <col name="Location">
 
        <!-- Define the column headings. -->
        <thead>
          <tr>
-           <th>Thumbnail</th>
+           <th>Picture</th>
            <th>Restaurant Name</th>
            <th>Price Level</th>
            <th>Location</th>
@@ -47,16 +92,29 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
        </tbody>
      </table>
    </vaadin-grid>
+    <paper-button raised class="indigo" onclick="dialog.open()">Add Restaurant</paper-button>
+    <iron-icon icon="create:ICON_NAME"></iron-icon>
+    <paper-dialog id="dialog">
+        
+        <h2>Add Restaurant</h2>
+        <paper-input label="Restaurant Name"></paper-input>
+        <paper-input label="location"></paper-input>
+        <paper-input label="price"></paper-input>
+        <div class="buttons">
+            <paper-button dialog-dismiss>Cancel</paper-button>
+            <paper-button dialog-confirm autofocus>Add Member</paper-button>
+        </div>
+    </paper-dialog>
    </div>
 
    </template>
 
-  
   <script>
     Polymer({
       is: 'my-view3',
     });
   </script>
-  <script src="https://www.gstatic.com/firebasejs/3.7.1/firebase.js"></script>
-  <script src="firebasehelper.js"></script>
+
+   <script src="https://www.gstatic.com/firebasejs/3.7.1/firebase.js"></script>
+   <script type="text/javascript" src="firebasehelper3.js"></script>
 </dom-module>
