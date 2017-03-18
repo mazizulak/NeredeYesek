@@ -48,6 +48,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       color: white !important;
     };
   }
+  paper-button.red {
+    background-color: var(--paper-red-500);
+    color: white;
+    --paper-button-raised-keyboard-focus: {
+      background-color: var(--paper-red-500) !important;
+      color: white !important;
+    };
+  }
   paper-button.green {
     background-color: var(--paper-green-500);
     color: white;
@@ -66,6 +74,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <link rel="import" href="../bower_components/paper-button/paper-button.html">
     <link rel="import" href="../bower_components/paper-input/paper-input.html">
     <link rel="import" href="../bower_components/iron-icon/iron-icon.html">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <div class="card">
       <vaadin-grid selection-mode="multi">
@@ -93,15 +102,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
    <br>
   <paper-button raised class="indigo" onclick="dialog.open()">Add Member</paper-button>
-  <iron-icon icon="create:ICON_NAME"></iron-icon>
    <paper-dialog id="dialog">
-
     <h2>Add Member</h2>
-      <paper-input label="Member Name"></paper-input>
-      <paper-input label="E-mail"></paper-input>
+      <paper-input id="newUserName" label="Member Name"></paper-input>
+      <paper-input id="newUserMail" label="E-mail"></paper-input>
     <div class="buttons">
       <paper-button dialog-dismiss>Cancel</paper-button>
-      <paper-button dialog-confirm autofocus>Add Member</paper-button>
+      <paper-button onclick="addMember();" dialog-confirm autofocus>Add Member</paper-button>
     </div>
   </paper-dialog>
     </div>

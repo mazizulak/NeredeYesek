@@ -24,6 +24,7 @@ if(document.getElementById("member")==null){
 	  var cell1 = row.insertCell(0);
 	  var cell2 = row.insertCell(1);
 	  var cell3 = row.insertCell(2);
+	  var cell4 = row.insertCell(3);
 	  var img = document.createElement('img');
 	  img.style.height = '65px';
 	  img.style.width = '65px';
@@ -31,6 +32,15 @@ if(document.getElementById("member")==null){
 	  cell1.appendChild(img);
 	  cell2.innerHTML = childSnapshot.val().name;
 	  cell3.innerHTML = childSnapshot.val().voted;
+	  cell4.innerHTML = '<paper-button raised class="red"><i class="material-icons">create</i></paper-button>';
 	  })
 	});
+}
+
+function addMember(){
+	var userName = document.getElementById("newUserName");
+	var userMail = document.getElementById("newUserMail");
+	console.log(userMail.value+"   "+userName.value);
+	userName.value = "";
+	userMail.value = "";
 }
