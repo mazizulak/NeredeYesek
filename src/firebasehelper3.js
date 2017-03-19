@@ -26,6 +26,7 @@ if(document.getElementById("restaurant")==null){
     var cell2 = row.insertCell(1);
     var cell3 = row.insertCell(2);
     var cell4 = row.insertCell(3);
+    var cell5 = row.insertCell(4);
     var img = document.createElement('img');
     img.style.height = '65px';
     img.style.width = '65px';
@@ -35,6 +36,21 @@ if(document.getElementById("restaurant")==null){
     cell2.innerHTML = childSnapshot.val().name;
     cell3.innerHTML = childSnapshot.val().price;
     cell4.innerHTML = childSnapshot.val().location;
+    cell5.innerHTML = '<paper-button onclick="editRestaurant('+table.rows.length+');" raised class="red"><i class="material-icons">create</i></paper-button>';
     })
   });
+}
+
+function editRestaurant(cell){
+    var name = table.rows[cell-1].cells[1].innerHTML;
+    globalCell = cell-1;
+    console.log(table.rows[cell-1].cells[1].innerHTML);
+    dialogForEdit.open();
+    var RestaurantName = document.getElementById("editRestaurantName");
+    RestaurantName.value = name;
+    var RestaurantPrice = document.getElementById("editRestaurantPrice");
+    RestaurantPrice.value = name;
+    var editRestaurantLocation = document.getElementById("editRestaurantLocation");
+    editRestaurantLocation.value = name;
+    //userMail.value = "";
 }

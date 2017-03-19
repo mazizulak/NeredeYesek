@@ -50,6 +50,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             color: white !important;
         };
     }
+    paper-button.red {
+        background-color: var(--paper-red-500);
+        color: white;
+        --paper-button-raised-keyboard-focus: {
+            background-color: var(--paper-red-500) !important;
+            color: white !important;
+        };
+    }
+
     paper-button.green {
         background-color: var(--paper-green-500);
         color: white;
@@ -69,6 +78,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <link rel="import" href="../bower_components/paper-button/paper-button.html">
     <link rel="import" href="../bower_components/paper-input/paper-input.html">
     <link rel="import" href="../bower_components/iron-icon/iron-icon.html">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
       <div class="card">
 	<vaadin-grid selection-mode="multi">
      <table id="restaurant">
@@ -77,6 +88,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
        <col name="name">
        <col name="price">
        <col name="Location">
+       <col name="edit">
 
        <!-- Define the column headings. -->
        <thead>
@@ -85,6 +97,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
            <th>Restaurant Name</th>
            <th>Price Level</th>
            <th>Location</th>
+           <th>Edit Restaurant</th>
          </tr>
        </thead>
        <tbody>
@@ -93,18 +106,26 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
      </table>
    </vaadin-grid>
     <paper-button raised class="indigo" onclick="dialog.open()">Add Restaurant</paper-button>
-    <iron-icon icon="create:ICON_NAME"></iron-icon>
-    <paper-dialog id="dialog">
-        
+    <paper-dialog id="dialog">        
         <h2>Add Restaurant</h2>
         <paper-input label="Restaurant Name"></paper-input>
         <paper-input label="location"></paper-input>
         <paper-input label="price"></paper-input>
         <div class="buttons">
             <paper-button dialog-dismiss>Cancel</paper-button>
-            <paper-button dialog-confirm autofocus>Add Member</paper-button>
+            <paper-button onclick="addRestaurant();" dialog-confirm autofocus>Add Restaurant</paper-button>
         </div>
     </paper-dialog>
+    <paper-dialog id="dialogForEdit">
+    <h2>Edit Restaurant</h2>
+      <paper-input id="editRestaurantName" label="Restaurant Name"></paper-input>
+      <paper-input id="editRestaurantPrice" label="price"></paper-input>
+      <paper-input id="editRestaurantLocation" label="location"></paper-input>
+    <div class="buttons">
+      <paper-button dialog-dismiss>Cancel</paper-button>
+      <paper-button onclick="saveRestaurant();" dialog-confirm autofocus>Save Restaurant</paper-button>
+    </div>
+  </paper-dialog>
    </div>
 
    </template>
