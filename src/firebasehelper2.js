@@ -29,7 +29,11 @@ if(document.getElementById("member")==null){
 	  var img = document.createElement('img');
 	  img.style.height = '65px';
 	  img.style.width = '65px';
-	  img.src=childSnapshot.val().picture;
+      if(childSnapshot.val().picture==""){
+        img.src='../images/defaultProfileImage.png';
+    	}else{
+         img.src=childSnapshot.val().picture;
+      }
 	  cell1.appendChild(img);
 	  cell2.innerHTML = childSnapshot.val().name;
 	  cell3.innerHTML = childSnapshot.val().voted;
@@ -41,6 +45,8 @@ if(document.getElementById("member")==null){
 function addMember(){
 	var userName = document.getElementById("newUserName");
 	var userMail = document.getElementById("newUserMail");
+
+
 	//table = document.getElementById("member").getElementsByTagName('tbody')[0];
 	var row = table.insertRow(table.rows.length);
 	var cell1 = row.insertCell(0);
@@ -55,9 +61,19 @@ function addMember(){
 	cell2.innerHTML = userName.value;
 	cell3.innerHTML = '0';
 	cell4.innerHTML = '<paper-button onclick="editMember('+table.rows.length+');" raised class="red"><i class="material-icons">create</i></paper-button>';
-	console.log(userMail.value+"   "+userName.value);
+
+	var Usersref = FIRRef.child('Users');
+    Usersref.child(userName.value).set({
+    'email': userMail.value,
+    'name': userName.value,
+    'picture': "",
+    'voted': 0
+    });
+    //table.refresh();
+	//console.log(userMail.value+"   "+userName.value);
 	userName.value = "";
 	userMail.value = "";
+	location.reload();
 }
 
 function editMember(cell){

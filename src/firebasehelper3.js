@@ -31,8 +31,12 @@ if(document.getElementById("restaurant")==null){
     var img = document.createElement('img');
     img.style.height = '65px';
     img.style.width = '65px';
-    img.src=childSnapshot.val().picture;
-    //img.src ="../images/nusret.jpg";
+    if(childSnapshot.val().picture==""){
+        img.src='../images/defaultPlaceImage.png';
+    }else{
+        img.src=childSnapshot.val().picture;
+    }
+
     cell1.appendChild(img);
     cell2.innerHTML = childSnapshot.val().name;
     cell3.innerHTML = childSnapshot.val().price;
@@ -54,12 +58,30 @@ function addRestaurant(){
     var img = document.createElement('img');
     img.style.height = '65px';
     img.style.width = '65px';
-    img.src='../images/defaultProfileImage.png';
+    img.src='../images/defaultPlaceImage.png';
     cell1.appendChild(img);
     cell2.innerHTML = restName.value;
     cell3.innerHTML = restPrice.value;
     cell4.innerHTML = restLocation.value
     cell5.innerHTML = '<paper-button onclick="editRestaurant('+table.rows.length+');" raised class="red"><i class="material-icons">create</i></paper-button>';
+    
+    //firebase add
+    var Restaurantref = FIRRef.child('Restaurants');
+    Restaurantref.child(restName.value).set({
+    'access type': 'walk',
+    'duration': 1000,
+    'gone': 0,
+    'limit': 0,
+    'location':restLocation.value,
+    'name' : restName.value,
+    'picture': "",
+    'price': parseInt(restPrice.value),
+    'weather-sens': 1000
+    });
+    restName.value="";
+    restLocation.value="";
+    restPrice.value="";
+    location.reload();
 
 }
 
