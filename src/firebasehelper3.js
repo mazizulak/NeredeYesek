@@ -20,8 +20,10 @@ var newPrice;
 var newLocation;
 var check=0;
 var counter =1;
+var countForPoints = 1;
 var voter,point;
-var updatedObj;
+var updatedObj, totalpoint;
+var restVoters;
 var dropDownForMembers ='<paper-listbox class="dropdown-content" id="memberList">';
 if(document.getElementById("restaurant")==null){
   console.log("restaurant is null");
@@ -164,11 +166,26 @@ function saveRestaurant(){
                                  childSnapshot.ref.update({"name":newRestName.value});
                                  childSnapshot.ref.update({"price":newPrice.value});
                                  childSnapshot.ref.update({"location":newLocation.value});
-                                 //childSnapshot.ref.child("Voters").update({voter:point});
-                                
+                                  
                                   updatedObj = {};
                                   updatedObj[voter] = point;
                                   childSnapshot.ref.child("Voters").update(updatedObj);
+                                  restVoters = childSnapshot.ref.child("Voters");
+                                  
+                                    totalpoint =  0;
+                                    countForPoints = 1;
+                                    restVoters.on('value',function(snapshot2){
+                                      snapshot2.forEach(function(childSnapshot2){
+                                          totalpoint += childSnapshot2.val();
+                                          console.log('totalpoint: '+totalpoint);
+                                          if(snapshot2.numChildren()==countForPoints){
+                                            console.log("counter: "+countForPoints);
+                                            console.log("totalpoint yazıldı: "+totalpoint);
+                                            childSnapshot.ref.update({"points":totalpoint});
+                                          }
+                                          countForPoints++;
+                                      })
+                                  });
                                   
 
 
