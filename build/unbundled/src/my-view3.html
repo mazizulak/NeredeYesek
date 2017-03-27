@@ -62,7 +62,6 @@
     <script src="../bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
 
 	<link rel="import" href="../bower_components/vaadin-grid/vaadin-grid-1.2.1/vaadin-grid.html">
-    <link rel="import" href="../bower_components/polymer/polymer.html">
     <link rel="import" href="../bower_components/paper-dialog/paper-dialog.html">
     <link rel="import" href="../bower_components/paper-button/paper-button.html">
     <link rel="import" href="../bower_components/paper-input/paper-input.html">
@@ -112,13 +111,20 @@
       <paper-input id="editRestaurantName" label="Restaurant Name"></paper-input>
       <paper-input id="editRestaurantPrice" label="price"></paper-input>
       <paper-input id="editRestaurantLocation" label="location"></paper-input>
-      <paper-dropdown-menu label="Vote For Restaurant">
-        <paper-listbox class="dropdown-content" selected="1">
+      <paper-dropdown-menu label="Member">
+        <paper-listbox>
           <paper-item>1</paper-item>
           <paper-item>2</paper-item>
           <paper-item>3</paper-item>
           <paper-item>4</paper-item>
-          <paper-item>5</paper-item>
+        </paper-listbox>
+      </paper-dropdown-menu>
+      <paper-dropdown-menu label="Vote">
+        <paper-listbox>
+          <paper-item>1</paper-item>
+          <paper-item>2</paper-item>
+          <paper-item>3</paper-item>
+          <paper-item>4</paper-item>
         </paper-listbox>
       </paper-dropdown-menu>
     <div class="buttons">
