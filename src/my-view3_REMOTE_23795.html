@@ -85,11 +85,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
       <div class="card">
-<<<<<<< HEAD
-	<vaadin-grid selection-mode="multi" visible-rows="6">
-=======
 	<vaadin-grid visible-rows="6">
->>>>>>> f8daa58102f1fd838bf824ceb44afd47a5adfbce
      <table id="restaurant">
        <!-- Define the columns and their mapping to data properties. -->
        <col name="picture">
@@ -113,6 +109,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
        </tbody>
      </table>
    </vaadin-grid>
+   <br>
     <paper-button raised class="indigo" onclick="dialog.open()">Add Restaurant</paper-button>
     <paper-dialog id="dialog">        
         <h2>Add Restaurant</h2>
@@ -130,10 +127,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       <paper-input id="editRestaurantPrice" label="price"></paper-input>
       <paper-input id="editRestaurantLocation" label="location"></paper-input>
       <paper-dropdown-menu label="Voter Member">
-      <div id="membercontainer" class="dropdown-content">
+      <div class="dropdown-content">
         <paper-listbox class="dropdown-content">
-          <paper-item id="member1">Aziz</paper-item>
-          <paper-item id="member2">Hüseyin</paper-item>
+          <paper-item>Aziz</paper-item>
+          <paper-item>Hüseyin</paper-item>
           <paper-item>Furkan</paper-item>
           <paper-item>Seco</paper-item>
         </paper-listbox>
@@ -142,11 +139,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       <paper-dropdown-menu label="Vote">
       <div class="dropdown-content">
         <paper-listbox class="dropdown-content">
-          <paper-item id="point1">1 Point</paper-item>
-          <paper-item id ="point2">2 Point</paper-item>
-          <paper-item id ="point3">3 Point</paper-item>
-          <paper-item id ="point4">4 Point</paper-item>
-          <paper-item id ="point5">5 Point</paper-item>
+          <paper-item>1 Point</paper-item>
+          <paper-item>2 Point</paper-item>
+          <paper-item>3 Point</paper-item>
+          <paper-item>4 Point</paper-item>
+          <paper-item>5 Point</paper-item>
         </paper-listbox>
         </div>
       </paper-dropdown-menu>

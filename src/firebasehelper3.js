@@ -75,10 +75,13 @@ function addRestaurant(){
     cell3.innerHTML = restPrice.value;
     cell4.innerHTML = restLocation.value
     cell5.innerHTML = '<paper-button onclick="editRestaurant('+table.rows.length+');" raised class="red"><i class="material-icons">create</i></paper-button>';
-    
+    var restaurantId;
     //firebase add
     var Restaurantref = FIRRef.child('Restaurants');
-    Restaurantref.push({
+    Restaurantref.on('value',function(snapshot){
+                      restaurantId=snapshot.numChildren();
+                      });
+    Restaurantref.child(restaurantId+1).set({
     'access type': 'walk',
     'duration': 1000,
     'gone': 0,
