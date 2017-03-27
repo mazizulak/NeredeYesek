@@ -7,9 +7,10 @@ var config = {
    };
   firebase.initializeApp(config);
   var FIRRef = firebase.database().ref();
+  var memberContainer = document.getElementById("membercontainer");
 
 //window.addEventListener("ewfwef", getRst());
-var table
+var table;
 var globalCell;
 var oldRestName;
 var oldPrice;
@@ -18,12 +19,34 @@ var newRestName;
 var newPrice;
 var newLocation;
 var check=0;
+var counter =1;
+var dropDownForMembers ='<paper-listbox class="dropdown-content">';
 if(document.getElementById("restaurant")==null){
   console.log("restaurant is null");
   //nothing
   location.reload();
 }else{
   console.log("else girdim restaurant");
+  var Members = FIRRef.child('Users');
+  Members.on('value',function(snapshot){
+    snapshot.forEach(function(childSnapshot) {
+                       if(check==1){
+                       return;
+                       }
+       console.log(dropDownForMembers);
+       console.log(childSnapshot.val().name);                
+      dropDownForMembers = dropDownForMembers+'\n<paper-item id="member'+counter+'">'+childSnapshot.val().name +'</paper-item>';
+      counter++;
+      if(counter == snapshot.numChildren()+1){
+        dropDownForMembers += '\n</paper-listbox>\n';
+        memberContainer.innerHTML = dropDownForMembers;
+      }
+    })
+  });
+
+  
+  
+
   var Restaurants = FIRRef.child('Restaurants');
   table = document.getElementById("restaurant").getElementsByTagName('tbody')[0];
   Restaurants.on('value',function(snapshot){
