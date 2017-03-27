@@ -1,0 +1,28 @@
+<html><head><link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="shared-styles.html">
+
+</head><body><dom-module id="my-view1">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+
+        padding: 10px;
+      }
+    </style>
+
+    <div class="card">
+      <center>
+        <h1>You Should Go That Restaurant</h1>
+        <img src="https://imgtrend.mynet.com/2016/10/05/05242368624234/nusret-et-tutkusu-s-600x387jpg-728x728.jpg" height="200">
+        <h3 id="restname"></h3>
+      </center>
+    </div>
+  </template>
+
+  <script src="https://www.gstatic.com/firebasejs/3.7.1/firebase.js"></script>
+  <script src="weather.js"></script>
+
+  <script>Polymer({is:"my-view1"});</script>
+</dom-module>
+</body></html>
