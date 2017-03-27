@@ -21,5 +21,7 @@
   <script>function myFunction(t){console.log(t),console.log(t.weather[0].main),console.log(t.main.temp)}var xmlhttp=new XMLHttpRequest,url="http://api.openweathermap.org/data/2.5/weather?id=745044&APPID=f7a1f7201de17dc71fd2dc59b503ed4b&units=metric&type=accurate";xmlhttp.onreadystatechange=function(){if(4==this.readyState&&200==this.status){var t=JSON.parse(this.responseText);myFunction(t)}},xmlhttp.open("GET",url,!0),xmlhttp.send();</script>
 
   <script>Polymer({is:"my-view1"});</script>
+  <script src="https://www.gstatic.com/firebasejs/3.7.1/firebase.js"></script>
+  <script type="text/javascript">var config={apiKey:"AIzaSyC83fcF4D4JhK2rBClQ-xid1U6SaVH9Xlc",authDomain:"project2-hw1.firebaseapp.com",databaseURL:"https://project2-hw1.firebaseio.com",storageBucket:"project2-hw1.appspot.com",messagingSenderId:"980282935378"};firebase.initializeApp(config);var FIRRef=firebase.database().ref();</script>
 </dom-module>
 </body></html>
