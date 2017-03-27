@@ -1,0 +1,25 @@
+<html><head><meta charset="UTF-8"><link rel="import" href="my-app.html"></head><body><dom-module id="my-view1">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+
+        padding: 10px;
+      }
+    </style>
+
+    <div class="card">
+      <center>
+        <h1>You Should Go That Restaurant</h1>
+        <img src="https://imgtrend.mynet.com/2016/10/05/05242368624234/nusret-et-tutkusu-s-600x387jpg-728x728.jpg" height="200">
+        <h3 id="restname"></h3>
+      </center>
+    </div>
+  </template>
+
+  <script src="https://www.gstatic.com/firebasejs/3.7.1/firebase.js"></script>
+  <script>function myFunction(t){console.log(t),console.log(t.weather[0].main),console.log(t.main.temp)}var xmlhttp=new XMLHttpRequest,url="http://api.openweathermap.org/data/2.5/weather?id=745044&APPID=f7a1f7201de17dc71fd2dc59b503ed4b&units=metric&type=accurate";xmlhttp.onreadystatechange=function(){if(4==this.readyState&&200==this.status){var t=JSON.parse(this.responseText);myFunction(t)}},xmlhttp.open("GET",url,!0),xmlhttp.send();</script>
+
+  <script>Polymer({is:"my-view1"});</script>
+</dom-module>
+</body></html>

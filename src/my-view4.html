@@ -8,7 +8,6 @@ Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 -->
 
-<link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="shared-styles.html">
 
 <dom-module id="my-view4">
@@ -22,10 +21,29 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     </style>
 
     <div class="card">
-      <div class="circle">4</div>
-      <h1>View Three</h1>
-      <p>Modus commodo minimum eum te, vero utinam assueverit per eu.</p>
-      <p>Ea duis bonorum nec, falli paulo aliquid ei eum.Has at minim mucius aliquam, est id tempor laoreet.Pro saepe pertinax ei, ad pri animal labores suscipiantur.</p>
+      <table style="width:100%">
+        <tr>
+          <th>Most Voted Restaurant</th>
+          <th>Least Voted Restaurant</th>
+          <th>Total Vote Number</th>
+        </tr></center>
+        <tr>
+          <td><center>Aziz Lokanta</center></td>
+          <td><center>Hüso Pastacısı</center></td>
+          <td><center>94</center></td>
+        </tr>
+        <tr>
+          <th>Total Member Number</th>
+          <th>Total Restaurant Number</th>
+          <th>This Page Visited Times</th>
+        </tr></center>
+        <tr>
+          <td><center>12</center></td>
+          <td><center>33</center></td>
+          <td><center>943</center></td>
+        </tr>
+      </table>
+      <br><br><br>
     </div>
   </template>
 
@@ -34,4 +52,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       is: 'my-view4',
     });
   </script>
+  <script src="https://www.gstatic.com/firebasejs/3.7.1/firebase.js"></script>
+  <script type="text/javascript" src="firebasehelper4.js"></script>
 </dom-module>
