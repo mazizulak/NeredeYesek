@@ -11,6 +11,13 @@ var config = {
 //window.addEventListener("ewfwef", getRst());
 var table
 var globalCell;
+var oldRestName;
+var oldPrice;
+var oldLocation;
+var newRestName;
+var newPrice;
+var newLocation;
+var check=0;
 if(document.getElementById("restaurant")==null){
   console.log("restaurant is null");
   //nothing
@@ -21,6 +28,9 @@ if(document.getElementById("restaurant")==null){
   table = document.getElementById("restaurant").getElementsByTagName('tbody')[0];
   Restaurants.on('value',function(snapshot){
     snapshot.forEach(function(childSnapshot) {
+                     if(check==1){
+                     return;
+                     }
   //  console.log(childSnapshot.val().name)
     var row = table.insertRow(table.rows.length);
     var cell1 = row.insertCell(0);
@@ -46,6 +56,7 @@ if(document.getElementById("restaurant")==null){
   });
 }
 function addRestaurant(){
+    check=1;
     var restName = document.getElementById("addName");
     var restLocation = document.getElementById("addLocation");
     var restPrice = document.getElementById("addPrice");
@@ -67,7 +78,7 @@ function addRestaurant(){
     
     //firebase add
     var Restaurantref = FIRRef.child('Restaurants');
-    Restaurantref.child(restName.value).set({
+    Restaurantref.push({
     'access type': 'walk',
     'duration': 1000,
     'gone': 0,
@@ -81,28 +92,46 @@ function addRestaurant(){
     restName.value="";
     restLocation.value="";
     restPrice.value="";
-    location.reload();
-
 }
 
 function editRestaurant(cell){
+    check=1;
     var name = table.rows[cell-1].cells[1].innerHTML;
     var price = table.rows[cell-1].cells[2].innerHTML;
     var location = table.rows[cell-1].cells[3].innerHTML;
+    oldRestName=table.rows[cell-1].cells[1].innerHTML;
+    oldPrice=table.rows[cell-1].cells[2].innerHTML;
+    oldLocation=table.rows[cell-1].cells[3].innerHTML;
     globalCell = cell-1;
     console.log(table.rows[cell-1].cells[1].innerHTML);
     dialogForEdit.open();
     var RestaurantName = document.getElementById("editRestaurantName");
     RestaurantName.value = name;
+    newRestName=document.getElementById("editRestaurantName");
     var RestaurantPrice = document.getElementById("editRestaurantPrice");
     RestaurantPrice.value = price;
+    newPrice=document.getElementById("editRestaurantPrice");
     var editRestaurantLocation = document.getElementById("editRestaurantLocation");
     editRestaurantLocation.value = location;
-    //userMail.value = "";
+    newLocation=document.getElementById("editRestaurantLocation");
 }
 function saveRestaurant(){
+    check=1;
     table.rows[globalCell].cells[1].innerHTML = document.getElementById("editRestaurantName").value;
     table.rows[globalCell].cells[2].innerHTML = document.getElementById("editRestaurantPrice").value;
     table.rows[globalCell].cells[3].innerHTML = document.getElementById("editRestaurantLocation").value;
+
+
+    var RestaurantsRef = FIRRef.child('Restaurants');
+    RestaurantsRef.on('value',function(snapshot){
+                snapshot.forEach(function(childSnapshot) {
+                                console.log(oldRestName);
+                                 if(childSnapshot.val().name==oldRestName){
+                                 childSnapshot.ref.update({"name":newRestName.value});
+                                 childSnapshot.ref.update({"price":newPrice.value});
+                                 childSnapshot.ref.update({"location":newLocation.value});
+                                  }
+                                 })
+                });
     //Mail bilgisi de firebase e buradan gönderilecek
 }
