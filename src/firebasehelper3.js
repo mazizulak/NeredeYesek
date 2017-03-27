@@ -20,7 +20,9 @@ var newPrice;
 var newLocation;
 var check=0;
 var counter =1;
-var dropDownForMembers ='<paper-listbox class="dropdown-content">';
+var voter,point;
+var updatedObj;
+var dropDownForMembers ='<paper-listbox class="dropdown-content" id="memberList">';
 if(document.getElementById("restaurant")==null){
   console.log("restaurant is null");
   //nothing
@@ -146,8 +148,14 @@ function saveRestaurant(){
     table.rows[globalCell].cells[1].innerHTML = document.getElementById("editRestaurantName").value;
     table.rows[globalCell].cells[2].innerHTML = document.getElementById("editRestaurantPrice").value;
     table.rows[globalCell].cells[3].innerHTML = document.getElementById("editRestaurantLocation").value;
-
-
+    var selectedMember = document.getElementById("memberList").selected;
+    var selectedPoint = document.getElementById("pointList").selected;
+    voter = document.getElementById('member'+(selectedMember+1)).innerHTML;
+    voter = nameFixer(voter);
+    point = selectedPoint+1;
+    console.log('voter: '+voter);
+    console.log('selectedMember: '+selectedMember);
+    console.log('point: '+point);
     var RestaurantsRef = FIRRef.child('Restaurants');
     RestaurantsRef.on('value',function(snapshot){
                 snapshot.forEach(function(childSnapshot) {
@@ -156,8 +164,33 @@ function saveRestaurant(){
                                  childSnapshot.ref.update({"name":newRestName.value});
                                  childSnapshot.ref.update({"price":newPrice.value});
                                  childSnapshot.ref.update({"location":newLocation.value});
+                                 //childSnapshot.ref.child("Voters").update({voter:point});
+                                
+                                  updatedObj = {};
+                                  updatedObj[voter] = point;
+                                  childSnapshot.ref.child("Voters").update(updatedObj);
+                                  
+
+
                                   }
                                  })
                 });
     //Mail bilgisi de firebase e buradan gönderilecek
+}
+
+function nameFixer(str){
+  var fixedStr ='';
+  var ckk = 0;
+  for (var i = 0 ; i < str.length ; i++) {
+    if(str[i] != ' ' && str[i] !='\n'){
+      ckk = 1;
+    }
+    if(ckk==1){
+      fixedStr += str[i];
+        if(str[i+1]=='\n'){
+          return fixedStr;
+        } 
+    }
+  }
+
 }
