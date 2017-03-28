@@ -23,20 +23,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <div class="card">
       <center>
         <h1>You Should Go That Restaurant</h1>
-        <img src="https://imgtrend.mynet.com/2016/10/05/05242368624234/nusret-et-tutkusu-s-600x387jpg-728x728.jpg" height="200">
-        <h3 id="restname"></h3>
+        <img id="resultRestaurantImage" src="../images/loading.gif" style="width: 70%;">
+        <h3 id="resultRestaurant"></h3>
       </center>
     </div>
   </template>
-
-  <script src="https://www.gstatic.com/firebasejs/3.7.1/firebase.js"></script>
-  <script src="weather.js"></script>
-
   <script>
     Polymer({
       is: 'my-eat',
     });
   </script>
   <script src="https://www.gstatic.com/firebasejs/3.7.1/firebase.js"></script>
-  <script type="text/javascript" src="firebasehelper1.js"></script>
+  <script src="eatifyalgorithm.js"></script>
 </dom-module>

@@ -15,6 +15,8 @@ var globalCell;
 var oldRestName;
 var oldPrice;
 var oldLocation;
+var oldDuration;
+var newDuration;
 var newRestName;
 var newPrice;
 var newLocation;
@@ -87,6 +89,7 @@ function addRestaurant(){
     var restName = document.getElementById("addName");
     var restLocation = document.getElementById("addLocation");
     var restPrice = document.getElementById("addPrice");
+    var restDuration = document.getElementById("addDuration");
     var row = table.insertRow(table.rows.length);
     var cell1 = row.insertCell(0);
     var cell2 = row.insertCell(1);
@@ -109,15 +112,14 @@ function addRestaurant(){
                       restaurantId=snapshot.numChildren();
                       });
     Restaurantref.child(restaurantId+1).set({
-    'access type': 'walk',
-    'duration': 1000,
-    'gone': 0,
-    'limit': 0,
+    'accessType': 'Walk',
+    'duration': restDuration.value,
+    'visitTimes': 0,
+    'visitedYesterday': 0,
     'location':restLocation.value,
     'name' : restName.value,
     'picture': "",
-    'price': parseInt(restPrice.value),
-    'weather-sens': 1000
+    'price': parseInt(restPrice.value)
     });
     restName.value="";
     restLocation.value="";
@@ -168,7 +170,7 @@ function saveRestaurant(){
                                  childSnapshot.ref.update({"location":newLocation.value});
                                   
                                   updatedObj = {};
-                                  updatedObj[voter] = point;
+                                  updatedObj[voter] = -point;
                                   childSnapshot.ref.child("Voters").update(updatedObj);
                                   restVoters = childSnapshot.ref.child("Voters");
                                   
