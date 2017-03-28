@@ -119,6 +119,7 @@ function addRestaurant(){
     'location':restLocation.value,
     'name' : restName.value,
     'picture': "",
+    'points': 0,
     'price': parseInt(restPrice.value)
     });
     restName.value="";

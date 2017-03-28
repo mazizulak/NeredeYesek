@@ -55,7 +55,7 @@
       <app-drawer id="drawer">
         <app-toolbar><br><br><img src="/images/logo.png"></app-toolbar>
         <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
-          <a name="view1" href="/view1">Restaurant to Eat</a>
+          <a name="eat" href="/eat">Restaurant to Eat</a>
           <a name="view2" href="/view2">Group Members</a>
           <a name="view3" href="/view3">Edit Restaurants</a>
           <a name="view4" href="/view4">Statistics</a>
@@ -73,7 +73,7 @@
         </app-header>
 
         <iron-pages selected="[[page]]" attr-for-selected="name" fallback-selection="view404" role="main">
-          <my-view1 name="view1"></my-view1>
+          <my-eat name="eat"></my-eat>
           <my-view2 name="view2"></my-view2>
           <my-view3 name="view3"></my-view3>
           <my-view4 name="view4"></my-view4>
@@ -83,6 +83,6 @@
     </app-drawer-layout>
   </template>
 
-  <script>Polymer({is:"my-app",properties:{page:{type:String,reflectToAttribute:!0,observer:"_pageChanged"}},observers:["_routePageChanged(routeData.page)"],_routePageChanged:function(e){this.page=e||"view1",this.$.drawer.persistent||this.$.drawer.close()},_pageChanged:function(e){var t=this.resolveUrl("my-"+e+".html");this.importHref(t,null,this._showPage404,!0)},_showPage404:function(){this.page="view404"}});</script>
+  <script>Polymer({is:"my-app",properties:{page:{type:String,reflectToAttribute:!0,observer:"_pageChanged"}},observers:["_routePageChanged(routeData.page)"],_routePageChanged:function(e){this.page=e||"eat",this.$.drawer.persistent||this.$.drawer.close()},_pageChanged:function(e){var t=this.resolveUrl("my-"+e+".html");this.importHref(t,null,this._showPage404,!0)},_showPage404:function(){this.page="view404"}});</script>
 </dom-module>
 </body></html>
