@@ -59,9 +59,5 @@ restRef.on('value',function(snapshot2){
     })
 });
 
-ga('send', {
-   hitType: 'pageview',
-   page: "https://project2-hw1.firebaseapp.com"
-});
 
 
