@@ -159,9 +159,6 @@ function updateRestaurant(key){
 		FIRRef.child("Restaurants").child(key).ref.update({"visitedYesterday":1});
 		resultRestaurant.innerHTML = data.val().name;
 		resultRestaurantImage.src= data.val().picture;
+		dialogForMail.open();
   });
 }
-
-window.onload = function() {
-  console.log("bitt!!!");
-};

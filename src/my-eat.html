@@ -20,6 +20,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
     </style>
 
+    <link rel="import" href="../bower_components/paper-dialog/paper-dialog.html">
+    <link rel="import" href="../bower_components/paper-button/paper-button.html">
     <div class="card">
       <center>
         <h1>You Should Go That Restaurant</h1>
@@ -27,6 +29,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <h3 id="resultRestaurant"></h3>
       </center>
     </div>
+    <paper-dialog id="dialogForMail">
+    <h2>Send E-mail</h2>
+      <form action="scripts/sendmail.php" role="form" id="contact_form" novalidate="novalidate" _lpchecked="1">
+      <button type="submit" id="contact_submit" data-loading-text="•••">SEND</button>
+    </form>
+  </paper-dialog>
   </template>
   <script>
     Polymer({
