@@ -23,14 +23,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <div class="card">
       <table style="width:100%">
         <tr>
-          <th>Most Voted Restaurant</th>
-          <th>Least Voted Restaurant</th>
+          <th>Most Visited Restaurant</th>
+          <th>Least Visited Restaurant</th>
           <th>Total Vote Number</th>
         </tr></center>
         <tr>
-          <td><center>Aziz Lokanta</center></td>
-          <td><center>Hüso Pastacısı</center></td>
-          <td><center>94</center></td>
+          <td id="MostVisited" align="center"></td>
+          <td id="LeastVisited" align="center"></td>
+          <td id="TotalVote" align="center"></td>
         </tr>
         <tr>
           <td><br></td>
@@ -40,12 +40,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <tr>
           <th>Total Member Number</th>
           <th>Total Restaurant Number</th>
-          <th>This Page Visited Times</th>
         </tr></center>
         <tr>
-          <td><center>12</center></td>
-          <td><center>33</center></td>
-          <td><center>943</center></td>
+          <td id="restCount" align="center"></td>
+          <td id="userCount" align="center"></td>
         </tr>
       </table>
       <br><br><br>
@@ -58,5 +56,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     });
   </script>
   <script src="https://www.gstatic.com/firebasejs/3.7.1/firebase.js"></script>
+  <script type="text/javascript" src="https://www.google-analytics.com/analytics.js" ></script>
   <script type="text/javascript" src="firebasehelper4.js"></script>
 </dom-module>
