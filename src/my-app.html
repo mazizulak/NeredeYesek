@@ -69,10 +69,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       <app-drawer id="drawer">
         <app-toolbar><br><br><img src="/images/logo.png"></app-toolbar>
         <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
-          <a name="eat" href="/eat">Restaurant to Eat</a>
-          <a name="view2" href="/view2">Group Members</a>
-          <a name="view3" href="/view3">Edit Restaurants</a>
-          <a name="view4" href="/view4">Statistics</a>
+          <a name="eat" href="/eat">Selected Restaurant</a>
+          <a name="members" href="/members">Members</a>
+          <a name="restaurants" href="/restaurants">Restaurants</a>
+          <a name="statistics" href="/statistics">Statistics</a>
         </iron-selector>
       </app-drawer>
 
@@ -92,9 +92,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             fallback-selection="view404"
             role="main">
           <my-eat name="eat"></my-eat>
-          <my-view2 name="view2"></my-view2>
-          <my-view3 name="view3"></my-view3>
-          <my-view4 name="view4"></my-view4>
+          <my-members name="members"></my-members>
+          <my-restaurants name="restaurants"></my-restaurants>
+          <my-statistics name="statistics"></my-statistics>
           <my-view404 name="view404"></my-view404>
         </iron-pages>
       </app-header-layout>
