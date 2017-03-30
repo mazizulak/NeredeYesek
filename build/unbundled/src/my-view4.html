@@ -13,14 +13,14 @@
     <div class="card">
       <table style="width:100%">
         <tbody><tr>
-          <th>Most Voted Restaurant</th>
-          <th>Least Voted Restaurant</th>
+          <th>Most Visited Restaurant</th>
+          <th>Least Visited Restaurant</th>
           <th>Total Vote Number</th>
         </tr>
         <tr>
-          <td><center>Aziz Lokanta</center></td>
-          <td><center>Hüso Pastacısı</center></td>
-          <td><center>94</center></td>
+          <td id="MostVisited" align="center"></td>
+          <td id="LeastVisited" align="center"></td>
+          <td id="TotalVote" align="center"></td>
         </tr>
         <tr>
           <td><br></td>
@@ -30,12 +30,10 @@
         <tr>
           <th>Total Member Number</th>
           <th>Total Restaurant Number</th>
-          <th>This Page Visited Times</th>
         </tr>
         <tr>
-          <td><center>12</center></td>
-          <td><center>33</center></td>
-          <td><center>943</center></td>
+          <td id="restCount" align="center"></td>
+          <td id="userCount" align="center"></td>
         </tr>
       </tbody></table>
       <br><br><br>
@@ -44,6 +42,7 @@
 
   <script>Polymer({is:"my-view4"});</script>
   <script src="https://www.gstatic.com/firebasejs/3.7.1/firebase.js"></script>
+  <script type="text/javascript" src="https://www.google-analytics.com/analytics.js"></script>
   <script type="text/javascript" src="firebasehelper4.js"></script>
 </dom-module>
 </body></html>
